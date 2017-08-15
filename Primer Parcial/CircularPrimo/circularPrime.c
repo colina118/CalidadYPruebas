@@ -61,13 +61,38 @@ bool girar(int i)
     {
         while (rotate)
         {
-             ss << num%100;
-             //std::cout<<"Que numero es"<< num << std::endl;
-             buffer= ss.str();
-             std::cout<< buffer << std::endl;
-             //buffer = std::to_string(num%10);
-             numstr += buffer;
-             num /=100;
+
+             if(num < 100)
+             {
+                 ss << num%10;
+                 //std::cout<<"Que numero es"<< num << std::endl;
+                 buffer= ss.str();
+                 std::cout<< buffer << std::endl;
+                 //buffer = std::to_string(num%10);
+                 numstr += buffer;
+                 num /= 10;
+             }
+             else if(num < 1000)
+             {
+                 ss << num%100;
+                 //std::cout<<"Que numero es"<< num << std::endl;
+                 buffer= ss.str();
+                 std::cout<< buffer << std::endl;
+                 //buffer = std::to_string(num%10);
+                 numstr += buffer;
+                 num /=100;
+             }
+             else
+             {
+                 ss << num%1000;
+                 //std::cout<<"Que numero es"<< num << std::endl;
+                 buffer= ss.str();
+                 std::cout<< buffer << std::endl;
+                 //buffer = std::to_string(num%10);
+                 numstr += buffer;
+                num /= 1000;
+             }
+
 
              rotate--;
         }
@@ -83,7 +108,7 @@ bool girar(int i)
         cont++;
     }
     std::cout << sizeof(num)<<std::endl;
-    if(cont == sizeof(num)-1)
+    if(cont >= sizeof(num)-1)
     {
         return true;
     }
